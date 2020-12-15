@@ -31,7 +31,8 @@ def main_view(request):
 def delete_view(request):
     # post = Post.objects.get(id=request.POST???, request???)
     post = Post.objects.get(id=request.GET['id'])
-    post.delete()
+    if post.author == request.user:
+        post.delete()
     return redirect('/')
 
 # login/signup page

@@ -1,26 +1,31 @@
-<h1>Hello</h1>
-
-{% if user.is_authenticated %}
-<p>Welcome back, {{ user.username }}</p>
-
-<a href="/logout"">Logout</a>
-{% endif %}
-
-<a href="/accounts">Login / Register</a>
-<br><br>
+{% extends 'base.html' %}
 
 
-<form method="POST" action="/">
-    {% csrf_token %}
-    <p>Create Post</p>
-    <input name="title" placeholder="title here" />
-    <input name="body" placeholder="body here" />
-    <input type="submit" value="Create Post"/>
-</form>
+{% block content %}
 
-{% for post in posts %}
-    <hr/>
-    <h3>{{ post.title }}</h3>
-    <p>{{ post.body }}</p>
-    <a href="delete?id={{ post.id }}">delete</a>
-{% endfor %}
+    {% if user.is_authenticated %}
+    <p>Welcome back, {{ user.username }}</p>
+
+    <a href="/logout"">Logout</a>
+    {% endif %}
+
+    <a href="/accounts">Login / Register</a>
+    <br><br>
+
+
+    <form method="POST" action="/">
+        {% csrf_token %}
+        <p>Create Post</p>
+        <input name="title" placeholder="title here" />
+        <input name="body" placeholder="body here" />
+        <input type="submit" value="Create Post"/>
+    </form>
+
+    {% for post in posts %}
+        <hr/>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.body }}</p>
+        <a href="delete?id={{ post.id }}">delete</a>
+    {% endfor %}
+
+{% endblock %}
