@@ -2,10 +2,10 @@
 
 <form method="POST" action="/">
     {% csrf_token %}
-    <p>Create Note</p>
-    <input name="title" placeholder="title" />
-    <input name="body" placeholder="body" />
-    <input type="submit" value="Create"/>
+    <p>Create Post</p>
+    <input name="title" placeholder="title here" />
+    <input name="body" placeholder="body here" />
+    <input type="submit" value="Create Post"/>
 </form>
 
 {% for post in posts %}
