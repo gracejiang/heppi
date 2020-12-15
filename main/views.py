@@ -9,7 +9,8 @@ from main.models import Post
 
 # main page
 def main_view(request):
-    # decide between POST & GET request
+    # if not request.user.is_authenticated:
+    #     return redirect('/accounts')    
 
     # creating a post
     if request.method == 'POST':
@@ -59,4 +60,4 @@ def signup_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('/')
+    return redirect('/accounts')

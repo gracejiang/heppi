@@ -1,9 +1,14 @@
 <h1>Hello</h1>
 
+{% if user.is_authenticated %}
+<p>Welcome back, {{ user.username }}</p>
+
 <a href="/logout"">Logout</a>
+{% endif %}
+
+<a href="/accounts">Login / Register</a>
 <br><br>
 
-<p>Welcome back, {{ user.username }}</p>
 
 <form method="POST" action="/">
     {% csrf_token %}
