@@ -1,6 +1,61 @@
-{% extends 'base.html' %}
+{% load static %}
 
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="{% static 'css/splash.css' %}">
+        <script>
+        function openTab(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    
+        document.getElementById("defaultOpen").click();
+        </script>
+        <title>heppi</title>
+    </head>
+    <body>
+        <div class="content">
 
-{% block content %}
-    <h3>this is a splash page!</h3>
-{% endblock %}
+            <h1 id="heppiTitle"><a href="/">heppi</a></h1>
+
+            <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'Login')" id="defaultOpen">Login</button>
+                <button class="tablinks" onclick="openTab(event, 'Signup')">Sign Up</button>
+            </div>
+            
+            <div id="Login" class="tabcontent">
+                <h1>Log In</h1>
+                <form method="POST" action="/login/">
+                    {% csrf_token %}
+                    <input name="username" placeholder="username" />
+                    <input name="password" placeholder="password" type="password" />
+                    <input type="Submit" value="Login" />
+                </form>
+            </div>
+            
+            <div id="Signup" class="tabcontent">
+                <h1>Sign Up</h1>
+                <form method="POST" action="/signup/">
+                    {% csrf_token %}
+                    <input name="username" placeholder="username" />
+                    <input name="email" placeholder="email" />
+                    <input name="password" placeholder="password" type="password" />
+                    <input type="Submit" value="Signup" />
+                </form>
+            </div>
+
+        </div>
+
+    </body>
+</html>

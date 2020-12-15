@@ -39,10 +39,6 @@ def delete_view(request):
         post.delete()
     return redirect('/')
 
-# login/signup page
-def accounts_view(request):
-    return render(request, 'accounts.html', {})
-
 def login_view(request):
     username, password = request.POST['username'], request.POST['password']
     user = authenticate(username=username, password=password)
@@ -51,7 +47,7 @@ def login_view(request):
         login(request, user)
         return redirect('/')
     else:
-        return redirect('/accounts?error=LoginError')
+        return redirect('/splash?error=LoginError')
 
 def signup_view(request):
     # print(request.POST['username'], request.POST['password'], request.POST['email'], )
@@ -66,4 +62,4 @@ def signup_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('/accounts')
+    return redirect('/splash')

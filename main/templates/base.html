@@ -3,12 +3,33 @@
     <head>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+        <script>
+            // nav menu styling
+            // Add active class to the current button (highlight it)
+            var header = document.getElementById("nav-menu");
+            var btns = header.getElementsByClassName("nav-link");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+                });
+            }
+        </script>
+
         {% block styles %}
         {% endblock %}
         <title>heppi</title>
     </head>
     <body>
-        <h1><a href="/">heppi</a></h1></div>
+
+        <ul id="nav-menu">
+            <li class="nav-link active"><a href="/">heppi</a></li>
+            <li class="nav-link"><a href="/">discover</a></li>
+            <li class="nav-link" style="float:right; margin-right:0px"><a href="/logout">logout</a></li>
+        </ul>
+
 
         {% block content %}
         {% endblock %}
