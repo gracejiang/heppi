@@ -26,9 +26,16 @@ def main_view(request):
         )
 
     # render posts page
-    # posts = Post.objects.all().order_by('-posted_at')
-    posts = Post.objects.filter(author=request.user).order_by('-created_at')
+    posts = Post.objects.all().order_by('-created_at')
+    # posts = Post.objects.filter(author=request.user).order_by('-created_at')
     return render(request, 'main.html', {'posts': posts})
+
+# viewing another user page
+def user_view(request, username):
+    user = User.objects.get(username=username)
+    # chirps = Chirp.objects.filter(author=user).order_by('-created_at')
+    return render(request, 'user.html', { 'user': user })
+
 
 
 # deleting a post
@@ -39,6 +46,7 @@ def delete_view(request):
         post.delete()
     return redirect('/')
 
+# login, logout, signup
 def login_view(request):
     username, password = request.POST['username'], request.POST['password']
     user = authenticate(username=username, password=password)
@@ -56,7 +64,6 @@ def signup_view(request):
         password=request.POST['password'],
         email=request.POST['email'],
     )
-
     login(request, user)
     return redirect('/')
 
