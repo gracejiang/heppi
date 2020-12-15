@@ -1,6 +1,7 @@
 from django.db import models
 
 # creating a new table in database --> make a migration
-class Note(model.Model):
-    title = model.CharField(max_length = 200)
+class Post(models.Model):
+    title = models.CharField(max_length=200)
     body = models.TextField()
+    created_at = models.DateTimeField(auto_now=True)

@@ -1,6 +1,15 @@
 <h1>Hello</h1>
 
+<form method="POST" action="/">
+    {% csrf_token %}
+    <p>Create Note</p>
+    <input name="title" placeholder="title" />
+    <input name="body" placeholder="body" />
+    <input type="submit" value="Create"/>
+</form>
+
 {% for post in posts %}
-    <h3>{{ note.title }}</h3>
-    <p>{{ note.body }}</p>
+    <hr/>
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.body }}</p>
 {% endfor %}
