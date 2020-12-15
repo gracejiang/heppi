@@ -6,4 +6,5 @@ import main.views as views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.main_view, name='main_view'),
+    path('delete', views.delete_view, name='delete_view'),
 ]
