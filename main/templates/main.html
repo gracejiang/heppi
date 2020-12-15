@@ -10,11 +10,7 @@
 
     {% if user.is_authenticated %}
     <p style="font-size: 24px;">Welcome back, <b>{{ user.username }}</b>!</p>
-
     {% endif %}
-
-    <br><br>
-
 
     <form method="POST" action="/">
         {% csrf_token %}
