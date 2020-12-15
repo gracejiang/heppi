@@ -12,23 +12,29 @@
     <p style="font-size: 24px;">Welcome back, <b>{{ user.username }}</b>!</p>
     {% endif %}
 
-    <form method="POST" action="/">
-        {% csrf_token %}
-        <p>Create Post</p>
-        <input name="title" placeholder="title here" />
-        <input name="body" placeholder="body here" />
-        <input type="submit" value="Create Post"/>
-    </form>
+    <div>
+        <a class="btn-primary" href="new_post">create a new post</a><br>
+    </div>
 
-    {% for post in posts %}
-        <hr/>
-        <h3>{{ post.title }}</h3>
-        <span><b><a href="{% url 'user_view' username=post.author.username %}">{{ post.author.username }}</a></b></span>
-        <p>{{ post.body }}</p>
-        {% if post.author == user %}
-            <a href="delete?id={{ post.id }}">delete</a>
-        {% endif %}
-        
-    {% endfor %}
+    <div class="container">
+        <div class="row">
+            {% for post in posts %}
+            <div class="col-md-4" style="margin-bottom: 1.5rem">
+                <div class="card">
+                    <div class="card-body">
+                        <h3><strong>{{ post.title }}</strong></h3>
+                        <span><b><a href="{% url 'user_view' username=post.author.username %}">{{ post.author.username }}</a></b></span>
+                        <p>{{ post.body }}</p>
+                        {% if post.author == user %}
+                            <a href="delete?id={{ post.id }}">delete</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    
 
 {% endblock %}

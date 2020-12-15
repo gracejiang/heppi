@@ -30,6 +30,21 @@ def main_view(request):
     # posts = Post.objects.filter(author=request.user).order_by('-created_at')
     return render(request, 'main.html', {'posts': posts})
 
+# creating a new post view
+def new_post_view(request):
+    # creating a post
+    if request.method == 'POST':
+        post = Post.objects.create(
+            title=request.POST['title'],
+            body=request.POST['body'],
+            author=request.user,
+            created_at=datetime.now()
+        )
+        return redirect('/')    
+
+    return render(request, 'new_post.html', {})
+    
+
 # viewing another user page
 def user_view(request, username):
     user = User.objects.get(username=username)

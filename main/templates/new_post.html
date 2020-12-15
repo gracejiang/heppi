@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block styles %}
+{% endblock %}
+
+{% block content %}
+
+    <h3>Create a New Post</h3>
+    <br>
+    <hr/>
+
+    <form method="POST" action="/">
+        {% csrf_token %}
+        <p>Create Post</p>
+        <input name="title" placeholder="title here" />
+        <input name="body" placeholder="body here" />
+        <input type="submit" value="Create Post"/>
+    </form>
+ 
+
+
+{% endblock %}
