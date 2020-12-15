@@ -4,9 +4,8 @@
 
 a {
     text-decoration: none;
-    color: #328fa8;
 }
-
+/* 
 body {
     align-items: center;
     align-content: center;
@@ -16,9 +15,9 @@ body {
 .content {
     max-width: 720px;
     margin: auto;
-}
+} */
 
-ul {
+#nav-menu ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -26,12 +25,12 @@ ul {
     margin-bottom: 30px;
 }
 
-li {
+#nav-link li {
     float: left;
     margin-right: 24px;
 }
 
-li a {
+#nav-link li a {
     display: block;
     color: #328fa8;
     text-align: center;
