@@ -35,7 +35,7 @@ def new_post_view(request):
             author=request.user,
             created_at=datetime.now()
         )
-        return redirect('/')    
+        return redirect('/user/' + request.user.username)    
 
     return render(request, 'new_post.html', {})
 

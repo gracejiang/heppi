@@ -29,7 +29,7 @@
                     </span></p>
                     <p>
                         <a href="{% url 'post_details_view' id=post.id %}">View Details</a>
-                        {% if post.author == user %}
+                        {% if post.author.username == request.user.username %}
                             | <a href="delete?id={{ post.id }}">Delete</a>
                         {% endif %}
                     </p>
