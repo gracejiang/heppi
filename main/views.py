@@ -65,7 +65,8 @@ def edit_profile_view(request):
     if request.method == 'POST':
         user.profile.bio = request.POST['bio']
         user.save()
-        return render(request, 'user.html', { 'user': user })
+        posts = Post.objects.filter(author=user).order_by('-created_at')
+        return redirect('/user/' + user.username)
 
     return render(request, 'edit_profile.html', { 'user': user })
 
