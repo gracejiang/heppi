@@ -1,21 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
-{% block styles %}
-{% endblock %}
-
 {% block content %}
 
     <h3>Create a New Post</h3>
     <br>
     <hr/>
 
-    <form>
+    <form method="POST" action="/new_post/">
         {% csrf_token %}
         <div class="form-group">
-                <label for="exampleTitle">Title</label>
-                <input name="title" type="text" class="form-control" id="exampleTitle" placeholder="Title">
+            <label for="exampleTitle">Title</label>
+            <input name="title" type="text" class="form-control" id="exampleTitle" placeholder="Title">
         </div>
         <div class="form-group">
             <label for="exampleBody">Body</label>

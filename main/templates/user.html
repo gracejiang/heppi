@@ -11,8 +11,10 @@
     {% if user.username == request.user.username %}
     <a href="../../edit_profile">
         <button type="button" class="btn btn-primary">Edit Profile</button>
-    </a>
+    </a><br><br>
     {% endif %}
+
+    <p>{{ user.profile.bio }}</p>
 
     <hr>
     <br>

@@ -7,16 +7,11 @@
     <br>
     <hr/>
 
-
-    <form>
+    <form method="POST" action="/edit_profile/">
         {% csrf_token %}
         <div class="form-group">
-            <label for="exampleTitle">Title</label>
-            <input name="title" type="text" class="form-control" id="exampleTitle" placeholder="Title">
-        </div>
-        <div class="form-group">
-            <label for="exampleBody">Body</label>
-            <input name="body" type="text" class="form-control" id="exampleBody" placeholder="Body">
+            <label for="exampleTitle">Bio</label>
+            <input name="bio" type="text" class="form-control" id="exampleTitle" placeholder="Add a description of yourself here!">
         </div>
         <button type="submit" class="btn btn-primary">Save Profile</button>
     </form>

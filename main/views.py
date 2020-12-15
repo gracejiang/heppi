@@ -54,6 +54,13 @@ def user_view(request, username):
 # edit profile
 def edit_profile_view(request):
     user = request.user
+
+    # edited profile
+    if request.method == 'POST':
+        user.profile.bio = request.POST['bio']
+        user.save()
+        return render(request, 'user.html', { 'user': user })
+
     return render(request, 'edit_profile.html', { 'user': user })
 
 # deleting a post
