@@ -7,9 +7,15 @@
 
 {% block content %}
 
-    <h3>{{ user.username }}'s Profile</h3>
-    <br>
+    <h3 style="margin-bottom: 1.5rem">{{ user.username }}'s Profile</h3>
+    {% if user.username == request.user.username %}
+    <a href="../../edit_profile">
+        <button type="button" class="btn btn-primary">Edit Profile</button>
+    </a>
+    {% endif %}
 
+    <hr>
+    <br>
 
     <div class="row">
         {% for post in all_posts %}

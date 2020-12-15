@@ -51,7 +51,10 @@ def user_view(request, username):
     posts = Post.objects.filter(author=user).order_by('-created_at')
     return render(request, 'user.html', { 'user': user, 'all_posts': posts })
 
-
+# edit profile
+def edit_profile_view(request):
+    user = request.user
+    return render(request, 'edit_profile.html', { 'user': user })
 
 # deleting a post
 def delete_view(request):
