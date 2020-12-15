@@ -17,12 +17,13 @@ def main_view(request):
         post = Post.objects.create(
             title=request.POST['title'],
             body=request.POST['body'],
-            # posted_at=datetime.now()
+            author=request.user,
+            created_at=datetime.now()
         )
 
     # render posts page
     # posts = Post.objects.all().order_by('-posted_at')
-    posts = Post.objects.all()
+    posts = Post.objects.filter(author=request.user).order_by('-created_at')
     return render(request, 'main.html', {'posts': posts})
 
 
