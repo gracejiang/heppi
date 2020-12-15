@@ -11,13 +11,19 @@
     <br>
     <hr/>
 
-    <form method="POST" action="/">
+    <form>
         {% csrf_token %}
-        <p>Create Post</p>
-        <input name="title" placeholder="title here" />
-        <input name="body" placeholder="body here" />
-        <input type="submit" value="Create Post"/>
+        <div class="form-group">
+                <label for="exampleTitle">Title</label>
+                <input name="title" type="text" class="form-control" id="exampleTitle" placeholder="Title">
+        </div>
+        <div class="form-group">
+            <label for="exampleBody">Body</label>
+            <input name="body" type="text" class="form-control" id="exampleBody" placeholder="Body">
+        </div>
+        <button type="submit" class="btn btn-success">Create Post</button>
     </form>
+
  
 
 

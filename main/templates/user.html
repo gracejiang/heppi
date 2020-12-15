@@ -11,17 +11,19 @@
     <br>
 
 
-    {% for post in all_posts %}
-    <div>
-        <hr/>
-        <p><span><b>
-            <a href="{% url 'user_view' username=post.author.username %}">{{ post.author.username }}</a>
-        </b></span> | 
-            <span><i>{{ post.created_at }}</i></span></p>
-        <p>{{ post.body }}</p>
+    <div class="row">
+        {% for post in all_posts %}
+        <div class="col-md-4" style="margin-bottom: 1.5rem">
+            <div class="card">
+                <div class="card-body">
+                    <h3><strong>{{ post.title }}</strong></h3>
+                    <span><b><a href="{% url 'user_view' username=post.author.username %}">{{ post.author.username }}</a></b></span>
+                    <p>{{ post.body }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-
-    {% endfor %}
  
 
 
