@@ -33,8 +33,8 @@ def main_view(request):
 # viewing another user page
 def user_view(request, username):
     user = User.objects.get(username=username)
-    # chirps = Chirp.objects.filter(author=user).order_by('-created_at')
-    return render(request, 'user.html', { 'user': user })
+    posts = Post.objects.filter(author=user).order_by('-created_at')
+    return render(request, 'user.html', { 'user': user, 'all_posts': posts })
 
 
 
