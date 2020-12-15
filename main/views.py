@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from datetime import datetime
 from django.contrib.auth import authenticate, login, logout
@@ -43,6 +43,12 @@ def new_post_view(request):
         return redirect('/')    
 
     return render(request, 'new_post.html', {})
+
+
+# viewing a post
+def post_details_view(request, id):
+    post = get_object_or_404(Post, id=id)
+    return render(request, 'post_details.html', { 'post_details': post })
     
 
 # viewing another user page

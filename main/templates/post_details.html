@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block styles %}
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="row">
+        <div class="col md-12">
+            <h3>{{ post_details.title }}</h3>
+        </div>
+    </div>
+    
+    <p></p>
+    <hr>
+    <br>
+
+    <div class="row">
+        <div class="col md-12">
+            <p>{{ post_details.body }}</p>
+        </div>
+    </div>
+ 
+
+
+{% endblock %}
