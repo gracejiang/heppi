@@ -1,5 +1,10 @@
 <h1>Hello</h1>
 
+<a href="/logout"">Logout</a>
+<br><br>
+
+<p>Welcome back, {{ user.username }}</p>
+
 <form method="POST" action="/">
     {% csrf_token %}
     <p>Create Post</p>
