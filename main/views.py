@@ -7,10 +7,14 @@ from main.models import Post
 
 # Create your views here.
 
+# splash page
+def splash_view(request):
+    return render(request, 'splash.html', {})
+
 # main page
 def main_view(request):
-    # if not request.user.is_authenticated:
-    #     return redirect('/accounts')    
+    if not request.user.is_authenticated:
+        return redirect('/splash')    
 
     # creating a post
     if request.method == 'POST':
