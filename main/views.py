@@ -14,21 +14,16 @@ def splash_view(request):
 # main page
 def main_view(request):
     if not request.user.is_authenticated:
-        return redirect('/splash')    
+        return redirect('/splash')
 
-    # creating a post
-    if request.method == 'POST':
-        post = Post.objects.create(
-            title=request.POST['title'],
-            body=request.POST['body'],
-            author=request.user,
-            created_at=datetime.now()
-        )
+    return render(request, 'main.html' )
 
+# discover page
+def discover_view(request):
     # render posts page
     posts = Post.objects.all().order_by('-created_at')
-    # posts = Post.objects.filter(author=request.user).order_by('-created_at')
-    return render(request, 'main.html', {'posts': posts})
+    return render(request, 'discover.html', {'posts': posts})
+
 
 # creating a new post view
 def new_post_view(request):
@@ -71,12 +66,12 @@ def edit_profile_view(request):
     return render(request, 'edit_profile.html', { 'user': user })
 
 # deleting a post
-def delete_view(request):
-    # post = Post.objects.get(id=request.POST???, request???)
+def delete_view(request, username):
     post = Post.objects.get(id=request.GET['id'])
-    if post.author == request.user:
+    user = request.user
+    if post.author == user:
         post.delete()
-    return redirect('/')
+    return redirect('/user/' + user.username)
 
 # login, logout, signup
 def login_view(request):

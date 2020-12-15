@@ -1,25 +1,28 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block styles %}
 {% endblock %}
 
+
 {% block content %}
 
-    <h3 style="margin-bottom: 1.5rem">{{ user.username }}'s Profile</h3>
-    <p>{{ user.profile.bio }}</p>
-    {% if user.username == request.user.username %}
-    <a href="../../edit_profile">
-        <button type="button" class="btn btn-primary">Edit Profile</button>
-    </a><br><br>
-    {% endif %}
+    <div class="row">
+        <div class="col-md-12">
+            <h3>See what made other users smile!</h3>
+        </div>
+    </div>
 
     <hr>
-    <br>
 
     <div class="row">
-        {% for post in all_posts %}
+        <div class="col-md-12" style="margin-bottom: 2.5rem">
+            
+        </div>
+    </div>
+
+    <div class="row">
+        {% for post in posts %}
         <div class="col-md-4" style="margin-bottom: 1.5rem">
             <div class="card">
                 <div class="card-body">
@@ -29,16 +32,13 @@
                     </span></p>
                     <p>
                         <a href="{% url 'post_details_view' id=post.id %}">View Details</a>
-                        {% if post.author == user %}
-                            | <a href="delete?id={{ post.id }}">Delete</a>
-                        {% endif %}
                     </p>
+                    
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
- 
 
 
 {% endblock %}

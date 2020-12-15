@@ -10,14 +10,14 @@
     <div class="row">
         <div class="col-md-12">
             {% if user.is_authenticated %}
-                <p style="font-size: 24px;">Welcome back, <b>{{ user.username }}</b>!</p>
+                <p style="font-size: 24px;">Welcome back, <b>{{ user.username }}</b>! &#127803;</p>
             {% endif %}
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12" style="margin-bottom: 1.5rem">
-            <a href="new_post"><button type="button" class="btn btn-success">Create a New Post</button></a>
+            <a href="new_post"><button type="button" class="btn btn-success">What made you smile today?</button></a>
         </div>
     </div>
 
@@ -26,29 +26,6 @@
             
         </div>
     </div>
-
-    <div class="row">
-        {% for post in posts %}
-        <div class="col-md-4" style="margin-bottom: 1.5rem">
-            <div class="card">
-                <div class="card-body">
-                    <h3>{{ post.title }}</h3>
-                    <p><span>
-                    <b><a href="{% url 'user_view' username=post.author.username %}">@{{ post.author.username }}</a></b>
-                    </span></p>
-                    <p>
-                        <a href="{% url 'post_details_view' id=post.id %}">View Details</a>
-                        {% if post.author == user %}
-                            | <a href="delete?id={{ post.id }}">Delete</a>
-                        {% endif %}
-                    </p>
-                    
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-
     
 
 {% endblock %}

@@ -11,9 +11,10 @@
     <div class="row">
         <div class="col md-12">
             <h3>{{ post_details.title }}</h3>
+            <p>By <b><a href="{% url 'user_view' username=post_details.author.username %}">@{{ post_details.author.username }}</a></b></p>
         </div>
     </div>
-    
+
     <p></p>
     <hr>
     <br>

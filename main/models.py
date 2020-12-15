@@ -4,6 +4,16 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+# category class
+class Category(models.Model):
+    name = models.CharField(max_length=30)
+    
+    def __str__(self):
+        return self.name
+    
+    def __repr__(self):
+        return self.name
+
 
 # creating a new table in database --> make a migration
 class Post(models.Model):
@@ -11,6 +21,7 @@ class Post(models.Model):
     body = models.TextField()
     author = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True) 
     created_at = models.DateTimeField()
+    categories = models.ManyToManyField(Category)
 
     def __str__(self):
         return self.title

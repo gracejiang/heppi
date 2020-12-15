@@ -5,3 +5,7 @@
     font-weight: normal;
     margin-top: 3rem; 
 }
+
+#heppiTitle a:hover {
+    text-decoration: none;
+}
